@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "A Python script to extract RGB and depth frames from a Intel RealSense bagfile"
 authors = ["cjiang2"]
 readme = "README.md"
-packages = [{include = "rs_bag2image_python"}]
 classifiers = [
     "Development Status :: 4 - Beta",
     "Environment :: Console",
