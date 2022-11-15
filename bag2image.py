@@ -96,7 +96,11 @@ def extract_frames(pipe,
     while True:
         try:
             # Wait for a conherent pairs of frames: (rgb, depth)
-            pairs = pipe.wait_for_frames()
+            available, pairs = pipe.try_wait_for_frames()
+            if not available:
+                if i == 0:
+                    print("Try passing `set_realtime` False, and it may work.")
+                break
 
             # Align depth image to rgb image first
             align = rs.align(rs.stream.color)
