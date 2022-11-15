@@ -79,7 +79,8 @@ def extract_frames(pipe,
     """
     # Configurations
     if save_colorize:
-        colorizer = rs.colorizer()
+        WHITE_TO_BLACK = 2
+        colorizer = rs.colorizer(WHITE_TO_BLACK)
     if save_pc:
         pc = rs.pointcloud()
         points = rs.points()
