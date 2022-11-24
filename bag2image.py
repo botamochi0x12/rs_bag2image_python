@@ -151,9 +151,7 @@ def extract_frames(pipe,
     pipe.stop()
     print('{} frames saved in total.'.format(i))
 
-    return
-
-if __name__ == '__main__':
+def main():
     # Arguments
     parser = argparse.ArgumentParser(description='Convert bagfile to images.')
     parser.add_argument('bagfile', help='Path to bagfile.')
@@ -177,3 +175,6 @@ if __name__ == '__main__':
                    save_colorize=args.save_colorize, 
                    save_pc=args.save_pc,
                    visualize=args.visualize)
+
+if __name__ == '__main__':
+    main()
