@@ -151,8 +151,8 @@ def extract_frames(pipe,
     except Exception as e:
         raise e
     finally:
-    # Clean pipeline
-    pipe.stop()
+        # Clean pipeline
+        pipe.stop()
     print('{} frames saved in total.'.format(i))
 
     return
