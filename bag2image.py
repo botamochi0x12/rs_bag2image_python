@@ -94,8 +94,8 @@ def extract_frames(pipe,
     device = profile.get_device()
     playback = device.as_playback()
     playback.set_real_time(False) # Make sure this is False or frames get dropped
-    while True:
-        try:
+    try:
+        while True:
             # Wait for a conherent pairs of frames: (rgb, depth)
             available, pairs = pipe.try_wait_for_frames()
             if not available:
@@ -148,12 +148,16 @@ def extract_frames(pipe,
                 cv2.imshow('RealSense', images)
                 cv2.waitKey(1)
             
-        except Exception as e:
+    except RuntimeError as e:
+        if "Frame don't arrive within" in str(e):
             print(e)
-            break
-
-    # Clean pipeline
-    pipe.stop()
+        else:
+            raise e
+    except Exception as e:
+        raise e
+    finally:
+        # Clean pipeline
+        pipe.stop()
     print('{} frames saved in total.'.format(i))
 
 def main():
