@@ -1,0 +1,41 @@
+[tool.poetry]
+name = "rs-bag2image-python"
+version = "0.1.0"
+description = "A Python script to extract RGB and depth frames from a Intel RealSense bagfile"
+authors = ["cjiang2"]
+readme = "README.md"
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Information Technology",
+    "Intended Audience :: Science/Research",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "Programming Language :: Python :: 3",
+    "Topic :: Multimedia :: Video :: Conversion",
+    "Topic :: Scientific/Engineering :: Image Processing",
+    "Topic :: Utilities",
+]
+
+[tool.poetry.dependencies]
+python = {version = "^3.8", markers = "sys_platform != 'linux'"}
+numpy = {version = "^1.23.4", python = ">3.8"}
+opencv-python = {version = "^4.6.0.66", python = ">=3.6"}
+
+[tool.poetry.dependencies.pyrealsense2]
+version = "^2.50.0"
+markers = "sys_platform == 'win32' or sys_platform == 'win64'"
+python =  "<3.10"  # As of 2022-11-11
+
+[tool.poetry.dependencies.pyrealsense2-macosx]
+version = "^2.50.0"
+markers = "sys_platform == 'darwin'"
+
+[tool.poetry.dependencies.pyrealsense]
+version = "^2.2"
+markers = "sys_platform == 'linux'"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
