@@ -157,13 +157,13 @@ if __name__ == '__main__':
     # Arguments
     parser = argparse.ArgumentParser(description='Convert bagfile to images.')
     parser.add_argument('bagfile', help='Path to bagfile.')
-    parser.add_argument('-post_processing','--post_processing', action="store_false", 
+    parser.add_argument('-post_processing','--post_processing', action="store_true", 
                         help='Enable depth post processing.')
-    parser.add_argument('-save_colorize','--save_colorize', action="store_true", 
+    parser.add_argument('-save_colorize','--save_colorize', action="store_false", 
                         help='Save colorized depth map.')
-    parser.add_argument('-save_pc','--save_pc', action="store_false", 
+    parser.add_argument('-save_pc','--save_pc', action="store_true", 
                         help='Save point cloud data.')
-    parser.add_argument('-visualize','--visualize', action="store_true", 
+    parser.add_argument('-visualize','--visualize', action="store_false", 
                         help='Visualize while saving.')
     args = parser.parse_args()
     save_path = os.path.join(os.path.curdir, args.bagfile.split('.')[0])
